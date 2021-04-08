@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Neon Balls</title>
+		<style>
+			body 
+			{
+    			background: black;
+    		}
+			#background_neon 
+			{
+				width: 1520px;
+				height: 700px;
+				background-image: url(neon.png);
+				background-size: cover;
+				border: 2px solid #0000ff;
+				box-shadow: 0 0 1px #0000ff,
+					0 0 2px #0000ff,
+					0 0 6px #0000ff, 0 0 12px #0000ff, inset 0 0 1px #0000ff, inset 0 0 2px #0000ff, inset 0 0 6px #0000ff, inset 0 0 12px #0000ff;
+			}
+			#background_block
+			{
+				border: 2px solid #0000ff;
+				margin: auto;
+				margin-top: 70px;
+				width: 30%;
+				height: 30%;
+				background: black;
+				box-shadow: 0 0 1px #0000ff, 0 0 2px #0000ff, 0 0 6px #0000ff, 0 0 12px #0000ff, inset 0 0 1px #0000ff, inset 0 0 2px #0000ff, inset 0 0 6px #0000ff, inset 0 0 12px #0000ff;
+			}
+			#background_block2
+			{
+				border: 2px solid #0000ff;
+				margin: auto;
+				margin-top: 70px;
+				width: 30%;
+				height: 30%;
+				display: none;
+				background: black;
+				box-shadow: 0 0 1px #0000ff, 0 0 2px #0000ff, 0 0 6px #0000ff, 0 0 12px #0000ff, inset 0 0 1px #0000ff, inset 0 0 2px #0000ff, inset 0 0 6px #0000ff, inset 0 0 12px #0000ff;
+			}
+			#game_box
+			{
+				border: 2px solid #0000ff;
+				width: 1520px;
+				height: 50px;
+				display: none;
+				align-items: center;
+				margin-top: -2px;
+				margin-left: -2px;
+				background:rgb(0,0,0,0);
+				box-shadow: 0 0 1px #0000ff, 0 0 2px #0000ff, 0 0 6px #0000ff, 0 0 12px #0000ff, inset 0 0 1px #0000ff, inset 0 0 2px #0000ff, inset 0 0 6px #0000ff, inset 0 0 12px #0000ff;
+			}
+			.button
+			{
+    			color:black;
+				text-transform: uppercase;
+				text-align: center;
+				font-weight: bold;
+				font-style: italic;
+				margin-top: 10px;
+    			background: white;
+    			border: 2px solid #0000ff;
+    			margin-left: 30px;
+				width: 400px;
+				font-size: 30px;
+				height: 50px;
+				letter-spacing: 5px;
+				box-shadow: 0 0 1px #0000ff, 0 0 2px #0000ff, 0 0 6px #0000ff, 0 0 12px #0000ff, inset 0 0 1px #0000ff, inset 0 0 2px #0000ff, inset 0 0 6px #0000ff, inset 0 0 12px #0000ff;
+			}
+			h1 
+			{
+				text-transform: uppercase;
+				text-align: center;
+				font-weight: bold;
+				font-style: italic;
+				font-size: 100px;
+				color: #ffffff;
+ 				text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #0000ff, 0 0 80px #0000ff, 0 0 90px #0000ff, 0 0 100px #0000ff, 0 0 150px #0000ff;
+			}
+			h2
+			{
+				text-transform: uppercase;
+				text-align: center;
+				font-weight: bold;
+				font-style:italic;
+				font-size: 30px;
+				color: #ffffff;
+ 				text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #0000ff, 0 0 80px #0000ff, 0 0 90px #0000ff, 0 0 100px #0000ff, 0 0 150px #0000ff;
+			}
+			name
+			{
+				text-transform: uppercase;
+				margin-left: 10px;
+				font-weight: bold;
+				font-style:italic;
+				font-size: 20px;
+				color: #ffffff;
+ 				text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #0000ff, 0 0 80px #0000ff, 0 0 90px #0000ff, 0 0 100px #0000ff, 0 0 150px #0000ff;
+			}
+			title_status
+			{
+				text-transform: uppercase;
+				text-align: center;
+				font-weight: bold;
+				font-style:italic;
+				font-size: 40px;
+				color: #ffffff;
+				width: 100%;
+				display: none;
+ 				text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #0000ff, 0 0 80px #0000ff, 0 0 90px #0000ff, 0 0 100px #0000ff, 0 0 150px #0000ff;
+			}
+			status
+			{
+				text-transform: uppercase;
+				text-align: center;
+				margin-bottom: 5px;
+				font-weight: bold;
+				font-style:italic;
+				font-size: 20px;
+				color: #ffffff;
+				width: 100%;
+				display: none;
+ 				text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #0000ff, 0 0 80px #0000ff, 0 0 90px #0000ff, 0 0 100px #0000ff, 0 0 150px #0000ff;
+			}
+			name2
+			{
+				text-transform: uppercase;
+				margin-left: 10px;
+				font-weight: normal;
+				font-style:normal;
+				font-size: 20px;
+				color: #ffffff;
+ 				text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #0000ff, 0 0 80px #0000ff, 0 0 90px #0000ff, 0 0 100px #0000ff, 0 0 150px #0000ff;
+			}
+			input
+			{
+				color:black;
+				text-align: center;
+				font-weight: bold;
+				font-style:italic;
+				font-size: 30px;
+				margin-left: 30px;
+				width: 400px;
+				box-sizing: border-box;
+				box-shadow: 0 0 1px #0000ff, 0 0 2px #0000ff, 0 0 6px #0000ff, 0 0 12px #0000ff, inset 0 0 1px #0000ff, inset 0 0 2px #0000ff, inset 0 0 6px #0000ff, inset 0 0 12px #0000ff;
+			}
+			
+			
+
+
+  </style>
+	</head>
+	<body>
+		<div id="background_neon">
+			<div id="game_box">
+				<name id = "name">Ваше имя:</name>
+				<name2 id = "name2"></name2>
+				<name id = "time">Осталось времени: </name>
+				<name2 id = "time2"></name2>
+				<name id = "done">Попаданий: </name>
+				<name2 id = "done2"></name2>
+				<name id = "lose">Промахов: </name>
+				<name2 id = "lose2"></name2>
+				<name id = "count">Счет: </name>
+				<name2 id = "count2"></name2>
+			</div>
+			<h1 class="blue">neon balls</h1>
+			<div id= "background_block">
+				<h2 class="blue">Введите ваше имя:</h2>
+				<input class ="input" type="text" id="input">
+				<button class="button" id = "button">Начать игру</button>
+			</div>
+			<div id= "background_block2">
+				<title_status id = "s1">Статистика</title_status>
+				<title_status id = "s2">-----------------</title_status>
+				<status id = "name3">Ваше имя: </status>
+				<status id = "done3">Попаданий: </status>
+				<status id = "lose3">Промахов: </status>
+				<status id = "count3">Счет: </status>
+			</div>
+		</div>
+		<script>
+			
+			var elem = document.getElementById('button');
+			var click = document.getElementById('background_neon');
+			var timerId;
+			click.onclick = check_click;
+			elem.onclick = function_button;
+
+			function done(event)
+			{
+				target = event.target
+				console.log(target)
+			}
+
+			function check_click(e)
+			{
+				var element = document.getElementById('game_box');
+					visible = element.style.display;
+					if (visible == "flex")
+					{
+						if (e.target.classList.value == "circle")
+						{
+						var element = document.getElementById('done2');
+						var count = parseInt(element.innerHTML, 10)
+						count++
+						element.innerHTML = count;
+						var lvl = 0
+						if (e.target.style.width == "25px")
+						{
+							lvl = 3;
+						}
+						if (e.target.style.width == "50px")
+						{
+							lvl = 2;
+						}
+						if (e.target.style.width == "75px")
+						{
+							lvl = 1;
+						}
+						e.target.style.display = "none"
+						var element = document.getElementById('count2');
+						var count = parseInt(element.innerHTML, 10)
+						count = count + lvl
+						element.innerHTML = count;
+						}
+						if (e.target.classList.value == "")
+						{
+						var element = document.getElementById('lose2');
+						var count = parseInt(element.innerHTML, 10)
+						count++
+						element.innerHTML = count;
+						var element = document.getElementById('count2');
+						var count = parseInt(element.innerHTML, 10)
+						count = count - 5
+						element.innerHTML = count;
+						}
+					}
+					
+			}
+
+			function creat()
+					{
+					var time = document.getElementById('time2');
+					var count = parseInt(time.innerHTML, 10)
+					if (count > 0)
+					{
+						count--
+						time.innerHTML = count
+						var colors = ["yellow","red","gray","lime","green","maroon","olive", "silver","aqua","blue","navy","white","fuchsia","purple","teal"]
+						var size = ["25px","50px","75px"]
+						size = size[Math.floor(Math.random()*size.length)];
+						var color = colors[Math.floor(Math.random()*colors.length)];
+
+						var newDiv = document.createElement("div");
+						var left = Math.random() * 1400 + 10;
+						var top = Math.random() * 600 + 65 ;
+						newDiv.style.borderRadius = "50%"
+						newDiv.classList.add("circle");
+						newDiv.style.background = color
+						newDiv.style.position = "absolute"
+						newDiv.style.left = `${left}px`
+						newDiv.style.top = `${top}px`
+						newDiv.style.width = size
+						newDiv.style.height = size
+						var fon = document.getElementById('background_neon')
+						fon.appendChild(newDiv)
+					}
+					else
+					{
+						clearInterval(timerId);
+						name = "Ваше имя: " + document.getElementById("name2").innerHTML
+						done = "Попаданий: " + document.getElementById("done2").innerHTML
+						lose = "Промахов: " + document.getElementById("lose2").innerHTML
+						count = "Счет: " + document.getElementById("count2").innerHTML
+						var element = document.getElementById('game_box');
+						element.style.display = "none";
+						var element = document.getElementsByClassName('circle');
+						for (var i = 0; i < element.length; i++)
+						{
+							element[i].style.display = "none"
+						}
+						var element = document.getElementById('name3');
+						element.innerHTML = name;
+						element.style.display = "block";
+						var element = document.getElementById('done3');
+						element.innerHTML = done;
+						element.style.display = "block";
+						var element = document.getElementById('lose3');
+						element.innerHTML = lose;
+						element.style.display = "block";
+						var element = document.getElementById('count3');
+						element.innerHTML = count;
+						element.style.display = "block";
+						var element = document.getElementById('background_block2');
+						element.style.display = "block";
+						var element = document.getElementById('s1');
+						element.style.display = "block";
+						var element = document.getElementById('s2');
+						element.style.display = "block";
+
+
+
+
+					}
+					
+					
+					
+					}
+
+
+			function function_button(event) 
+			{
+				var name_id = document.getElementById('input');
+				var name = name_id.value
+				if (name=="")
+				{
+					alert("Вы не указали ваше имя")
+				}
+				else
+				{
+					var element = document.getElementsByClassName('blue');
+					for (i=0;i<element.length;i++)
+						{
+							element[i].style.display = "none";
+						}
+					var element = document.getElementById('background_block');
+
+				    element.style.display = "none";
+					var element = document.getElementById('background_neon');
+					element.style.background = "black";
+					var element = document.getElementById('game_box');
+					element.style.display = "flex";
+					var element = document.getElementById('name2');
+					element.innerHTML = name;
+					var element = document.getElementById('time2');
+					element.innerHTML = "10";
+					var element = document.getElementById('done2');
+					element.innerHTML = "0";
+					var element = document.getElementById('lose2');
+					element.innerHTML = "0";
+					var element = document.getElementById('count2');
+					element.innerHTML = "0";
+					timerId = setInterval(() => creat(), 1000);
+					
+				}
+
+			}
+		</script>
+	</body>
+</html> 
